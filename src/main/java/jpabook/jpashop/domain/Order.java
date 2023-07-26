@@ -27,10 +27,10 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = LAZY)
+    @OneToOne(cascade = CascadeType.ALL , fetch = LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 

@@ -60,6 +60,7 @@ public class OrderSimpleApiController {
             orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
             address = order.getDelivery().getAddress();
+            
         }
     }
 

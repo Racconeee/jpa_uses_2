@@ -40,4 +40,13 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    //Transaction 상태에서 가져오면 영속성
+    //Transactional 시작이되고 당연하게 영속성 컨텍스트에는 없으니 DB에서 id 를 끌고와서
+    // Member에 넣어줄 때 영속상태가되고
+    //Transactional이 끝날때 커밋을 날리고 jpa가 변경감지를 하고 플러쉬를 날리고 DB 를 업데이트한다.
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+    }
 }
